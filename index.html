@@ -3,7 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ticaret Rotan ile ihracat müşterilerinizi nokta atışı bulun. B2B veri madenciliği ve yapay zeka destekli ticari istihbarat platformu.">
+    <meta name="keywords" content="ihracat, müşteri bulma, b2b data, ticari istihbarat, gtip analizi, cold email">
+    <meta name="author" content="Ticaret Rotan Teknoloji A.Ş.">
+    <meta name="theme-color" content="#0B1120">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ticaretrotan.com/">
+    <meta property="og:title" content="Ticaret Rotan - Nokta Atışı İhracat Müşterisi">
+    <meta property="og:description" content="Ürünlerinizi kimlerin alacağını isim isim biliyoruz. Ücretsiz analiz isteyin.">
+    <meta property="og:image" content="https://placehold.co/1200x630/0B1120/3B82F6?text=Ticaret+Rotan+Analiz">
+
+    <link rel="icon" href="https://placehold.co/32x32/3B82F6/white?text=TR" type="image/png">
+
     <title>Ticaret Rotan - Nokta Atışı Müşteri Bulma</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -13,39 +27,68 @@
                         brandDark: '#0B1120',
                         brandBlue: '#3B82F6',
                         brandGold: '#F59E0B',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
-    
+
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-   <style>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+        
         @keyframes scroll {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
         .animate-scroll {
             animation: scroll 20s linear infinite;
-            /* SİHİRLİ DOKUNUŞ BURADA: */
-            will-change: transform; 
-            /* Mobilde takılmayı önler: */
-            transform: translateZ(0); 
+            will-change: transform;
+            transform: translateZ(0);
+        }
+        /* Input Validation Error Style */
+        .input-error {
+            border-color: #ef4444 !important; /* Tailwind Red-500 */
+            animation: shake 0.3s ease-in-out;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
         }
     </style>
 </head>
 <body class="bg-brandDark text-white font-sans antialiased overflow-x-hidden">
 
     <nav class="w-full flex items-center justify-between px-6 py-4 border-b border-gray-800 bg-brandDark/90 backdrop-blur fixed top-0 z-50">
-        <a href="index.html" class="text-2xl font-bold tracking-tight text-white cursor-pointer decoration-0">
+        <a href="index.html" class="text-2xl font-bold tracking-tight text-white cursor-pointer decoration-0 z-50">
             Ticaret<span class="text-brandBlue">Rotan</span>
         </a>
+
         <div class="hidden md:flex items-center gap-6">
             <a href="#nasil-calisir" class="text-gray-300 hover:text-white text-sm font-medium transition">Nasıl Çalışır?</a>
             <a href="#referanslar" class="text-gray-300 hover:text-white text-sm font-medium transition">Başarı Hikayeleri</a>
             <a href="https://wa.me/905434688407" target="_blank" class="bg-brandBlue hover:bg-blue-600 text-white px-5 py-2 rounded-full text-sm font-bold transition shadow-lg shadow-blue-500/30 flex items-center gap-2">
                 <span>📞</span> 0543 468 8407
+            </a>
+        </div>
+
+        <button id="mobile-menu-btn" class="md:hidden z-50 text-gray-300 hover:text-white focus:outline-none">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+
+        <div id="mobile-menu-overlay" class="fixed inset-0 bg-brandDark/95 backdrop-blur-lg z-40 transform translate-x-full transition-transform duration-300 flex flex-col items-center justify-center gap-8">
+            <a href="#nasil-calisir" class="mobile-link text-2xl font-bold text-white hover:text-brandBlue">Nasıl Çalışır?</a>
+            <a href="#referanslar" class="mobile-link text-2xl font-bold text-white hover:text-brandBlue">Başarı Hikayeleri</a>
+            <a href="#paketler" class="mobile-link text-2xl font-bold text-white hover:text-brandBlue">Paketler</a>
+            <a href="https://wa.me/905434688407" class="mt-4 bg-brandBlue text-white px-8 py-4 rounded-full text-xl font-bold shadow-xl">
+                📞 Bize Ulaşın
             </a>
         </div>
     </nav>
@@ -66,11 +109,12 @@
                     Fuarlarda kartvizit peşinde koşmayın. Sizin sektörünüzde, malınıza ihtiyacı olan 
                     gerçek alıcıları nokta atışı buluyor ve sizi masaya oturtuyoruz.
                 </p>
+                
                 <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                    <button onclick="openModal()" class="bg-brandBlue hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-lg shadow-lg hover:shadow-blue-500/50 transition transform hover:-translate-y-1">
-                            ÜCRETSİZ MÜŞTERİ ANALİZİ İSTE
+                    <button id="hero-cta-btn" class="bg-brandBlue hover:bg-blue-600 text-white font-bold py-4 px-8 rounded-lg shadow-lg hover:shadow-blue-500/50 transition transform hover:-translate-y-1">
+                        ÜCRETSİZ MÜŞTERİ ANALİZİ İSTE
                     </button>
-                    <a href="Rapor-Ornek.html" target="_blank" class="flex items-center justify-center gap-2 border border-gray-700 hover:border-gray-500 text-gray-300 hover:text-white font-semibold py-4 px-8 rounded-lg transition">
+                    <a href="ornek-rapor.html" target="_blank" class="flex items-center justify-center gap-2 border border-gray-700 hover:border-gray-500 text-gray-300 hover:text-white font-semibold py-4 px-8 rounded-lg transition">
                         <span>Örnek Raporu Gör</span>
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
                     </a>
@@ -92,7 +136,7 @@
                         </div>
                         <div class="text-[10px] text-gray-500 font-mono ml-2">hedef_pazar_analizi_v2.pdf</div>
                     </div>
-                    <img src="https://placehold.co/800x600/1e293b/FFF?text=Hedef+Pazar+Raporu+Görünümü" alt="Rapor Önizleme" class="rounded w-full shadow-inner">
+                    <img src="https://placehold.co/800x600/1e293b/FFF?text=Hedef+Pazar+Raporu+Görünümü" alt="Rapor Önizleme" loading="lazy" class="rounded w-full shadow-inner">
                     <div class="absolute -bottom-6 -left-6 bg-white text-gray-900 p-4 rounded-lg shadow-xl border-l-4 border-green-500 hidden md:block animate-bounce" style="animation-duration: 3s;">
                         <div class="text-xs font-bold text-gray-500 uppercase">Sonuç</div>
                         <div class="font-bold text-sm">🇩🇪 Hans Müller Toplantı İstedi</div>
@@ -105,7 +149,7 @@
     <section id="referanslar" class="py-12 border-y border-gray-800 bg-gray-900/50">
         <div class="container mx-auto px-6 text-center">
             <p class="text-sm text-gray-400 font-bold mb-8 uppercase tracking-widest" data-aos="fade-up">
-                ŞU SEKTÖRLERDEN ÜRETİCİLER TİCARETE BAŞLADI
+                ŞU SEKTÖRLERDEN ÜRETİCİLER TİCARET ROTAN İLE TANIŞTI
             </p>
             <div class="relative overflow-hidden w-full py-8">
                 <div class="flex animate-scroll w-[200%]">
@@ -156,7 +200,7 @@
                         <li class="flex items-center gap-3"><svg class="w-5 h-5 text-brandBlue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Satın Alma Yöneticisi İsimleri</li>
                         <li class="flex items-center gap-3"><svg class="w-5 h-5 text-brandBlue" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>Excel / CSV Formatında Teslim</li>
                     </ul>
-                    <button class="w-full border border-white text-white font-bold py-3 rounded-lg hover:bg-white hover:text-black transition">Fiyat Listesi İste</button>
+                    <button class="modal-trigger-btn w-full border border-white text-white font-bold py-3 rounded-lg hover:bg-white hover:text-black transition">Fiyat Listesi İste</button>
                 </div>
                 <div class="bg-gradient-to-b from-blue-900/40 to-gray-800 border-2 border-brandBlue rounded-2xl p-8 relative transform hover:scale-105 transition duration-300 shadow-2xl" data-aos="fade-left">
                     <div class="absolute top-0 right-0 bg-brandBlue text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">EN ÇOK TERCİH EDİLEN</div>
@@ -169,7 +213,7 @@
                         <li class="flex items-center gap-3"><svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>Almanca/İngilizce Tanıtım Yazısı</li>
                         <li class="flex items-center gap-3"><svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>Haftalık İlerleme Raporu</li>
                     </ul>
-                    <button onclick="openModal()" class="w-full bg-brandBlue hover:bg-blue-600 text-white font-bold py-4 rounded-lg shadow-lg transition animate-pulse">HEMEN TEKLİF AL</button>
+                    <button class="modal-trigger-btn w-full bg-brandBlue hover:bg-blue-600 text-white font-bold py-4 rounded-lg shadow-lg transition animate-pulse">HEMEN TEKLİF AL</button>
                 </div>
             </div>
         </div>
@@ -182,9 +226,9 @@
                 <p class="text-gray-400">Merak ettiğiniz tüm detayları şeffaflıkla cevaplıyoruz.</p>
             </div>
 
-            <div class="space-y-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="space-y-4" id="faq-container" data-aos="fade-up" data-aos-delay="100">
                 <div class="border border-gray-700 rounded-lg bg-gray-800/50 overflow-hidden">
-                    <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex justify-between items-center text-white font-semibold hover:bg-gray-800 transition">
+                    <button class="faq-btn w-full px-6 py-4 text-left flex justify-between items-center text-white font-semibold hover:bg-gray-800 transition">
                         <span>Bu sistem yasal mı? KVKK sorunu olur mu?</span>
                         <span class="text-brandBlue text-xl transition-transform transform">+</span>
                     </button>
@@ -194,7 +238,7 @@
                 </div>
 
                 <div class="border border-gray-700 rounded-lg bg-gray-800/50 overflow-hidden">
-                    <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex justify-between items-center text-white font-semibold hover:bg-gray-800 transition">
+                    <button class="faq-btn w-full px-6 py-4 text-left flex justify-between items-center text-white font-semibold hover:bg-gray-800 transition">
                         <span>Satış garantisi veriyor musunuz?</span>
                         <span class="text-brandBlue text-xl transition-transform transform">+</span>
                     </button>
@@ -204,7 +248,7 @@
                 </div>
 
                 <div class="border border-gray-700 rounded-lg bg-gray-800/50 overflow-hidden">
-                    <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex justify-between items-center text-white font-semibold hover:bg-gray-800 transition">
+                    <button class="faq-btn w-full px-6 py-4 text-left flex justify-between items-center text-white font-semibold hover:bg-gray-800 transition">
                         <span>Hangi ülkelerden veri sağlayabiliyorsunuz?</span>
                         <span class="text-brandBlue text-xl transition-transform transform">+</span>
                     </button>
@@ -239,10 +283,25 @@
                 <div>
                     <h4 class="text-white font-bold mb-4">Bize Ulaşın</h4>
                     <ul class="space-y-3 text-gray-500 text-sm">
-                        <li class="flex items-start gap-2"><span class="mt-1">📍</span><span>Kocaeli Üniversitesi Teknopark Bölgesi<br>Yeniköy Merkez, Başiskele / Kocaeli</span></li>
-                        <li class="flex items-center gap-2"><span>📞</span> <a href="tel:+905434688407" class="hover:text-white transition">0543 468 8407</a></li>
-                        <li class="flex items-center gap-2"><span>📱</span> <a href="tel:+905437181807" class="hover:text-white transition">0543 718 1807</a></li>
-                        <li class="flex items-center gap-2"><span>✉️</span> <a href="mailto:info@ticaretrotani.com" class="hover:text-white transition">info@ticaretrotani.com</a></li>
+                        <li class="flex items-start gap-2">
+                            <span class="mt-1">📍</span>
+                            <span>Kocaeli Üniversitesi Teknopark Bölgesi<br>Yeniköy Merkez, Başiskele / Kocaeli</span>
+                        </li>
+                        
+                        <li class="flex items-center gap-2">
+                            <span>📞</span> 
+                            <a href="tel:+905434688407" class="hover:text-white transition">0543 468 8407</a>
+                        </li>
+
+                        <li class="flex items-center gap-2">
+                            <span>📱</span> 
+                            <a href="tel:+905437181807" class="hover:text-white transition">0543 718 1807</a>
+                        </li>
+
+                        <li class="flex items-center gap-2">
+                            <span>✉️</span> 
+                            <a href="mailto:info@ticaretrotani.com" class="hover:text-white transition">info@ticaretrotani.com</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -257,10 +316,10 @@
     </footer>
 
     <div id="analizModal" class="fixed inset-0 z-[60] hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-        <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity backdrop-blur-sm" onclick="closeModal()"></div>
+        <div id="modal-backdrop" class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity backdrop-blur-sm"></div>
         <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
             <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg border-2 border-brandBlue">
-                <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+                <button id="modal-close-btn" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
                 </button>
                 <div class="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
@@ -271,15 +330,15 @@
                         <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left w-full">
                             <h3 class="text-xl font-bold leading-6 text-gray-900" id="modal-title">Ücretsiz Analizi Başlat</h3>
                             <div class="mt-2">
-                                <p class="text-sm text-gray-500 mb-4">Size uygun alıcıları bulmamız için lütfen aşağıdaki bilgileri girin. Sizi doğrudan WhatsApp üzerinden uzmanımıza bağlayacağız.</p>
+                                <p class="text-sm text-gray-500 mb-4">Size uygun alıcıları bulmamız için lütfen aşağıdaki bilgileri girin.</p>
                                 <div class="space-y-4">
                                      <div>
                                         <label class="block text-sm font-medium text-gray-700">İhracat Yapmak İstediğiniz Ülke?</label>
-                                        <input type="text" id="targetCountry" placeholder="Örn: Almanya, Rusya..." class="mt-1 block w-full rounded-md border border-gray-300 bg-white text-gray-900 shadow-sm focus:border-brandBlue focus:ring-brandBlue sm:text-sm p-3">
+                                        <input type="text" id="targetCountry" placeholder="Örn: Almanya, Rusya..." class="mt-1 block w-full rounded-md border border-gray-300 bg-white text-gray-900 shadow-sm focus:border-brandBlue focus:ring-brandBlue sm:text-sm p-3 transition-colors">
                                      </div>
                                      <div>
                                         <label class="block text-sm font-medium text-gray-700">Ürününüz veya Sektörünüz?</label>
-                                        <input type="text" id="productName" placeholder="Örn: Mobilya, Yedek Parça..." class="mt-1 block w-full rounded-md border border-gray-300 bg-white text-gray-900 shadow-sm focus:border-brandBlue focus:ring-brandBlue sm:text-sm p-3">
+                                        <input type="text" id="productName" placeholder="Örn: Mobilya, Yedek Parça..." class="mt-1 block w-full rounded-md border border-gray-300 bg-white text-gray-900 shadow-sm focus:border-brandBlue focus:ring-brandBlue sm:text-sm p-3 transition-colors">
                                      </div>
                                 </div>
                             </div>
@@ -287,11 +346,11 @@
                     </div>
                 </div>
                 <div class="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                    <button type="button" onclick="sendToWhatsapp()" class="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-bold text-white shadow-sm hover:bg-green-500 sm:ml-3 sm:w-auto gap-2 items-center">
+                    <button id="send-whatsapp-btn" type="button" class="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-bold text-white shadow-sm hover:bg-green-500 sm:ml-3 sm:w-auto gap-2 items-center">
                         <span>Analizi WhatsApp'tan İste</span>
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.017-1.04 2.48s1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
                     </button>
-                    <button type="button" onclick="closeModal()" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">İptal</button>
+                    <button id="modal-cancel-btn" type="button" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">İptal</button>
                 </div>
             </div>
         </div>
@@ -299,51 +358,7 @@
 
     <script src="data.js"></script>
     <script src="app.js"></script>
-
-    <script>
-        function toggleFaq(button) {
-            const content = button.nextElementSibling;
-            const icon = button.querySelector('span:last-child');
-            
-            // Diğer açık olanları kapat (Opsiyonel ama şık durur)
-            document.querySelectorAll('.hidden').forEach(el => {
-                 // Basit tutalım, sadece tıklananı açsın
-            });
-
-            if (content.classList.contains('hidden')) {
-                content.classList.remove('hidden');
-                icon.innerText = '-';
-                icon.classList.add('rotate-180');
-            } else {
-                content.classList.add('hidden');
-                icon.innerText = '+';
-                icon.classList.remove('rotate-180');
-            }
-        }
-        
-        // Modal Logic
-        function openModal() { document.getElementById('analizModal').classList.remove('hidden'); }
-        function closeModal() { document.getElementById('analizModal').classList.add('hidden'); }
-        function sendToWhatsapp() {
-            var country = document.getElementById('targetCountry').value;
-            var product = document.getElementById('productName').value;
-            if(country === "" || product === "") { alert("Lütfen ülke ve ürün bilgisini giriniz."); return; }
-            var phone = "905434688407"; 
-            var message = `Merhaba, ${country} pazarı için ${product} sektöründe yurt dışı müşteri analizi talep ediyorum. Bilgi alabilir miyim?`;
-            window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
-            closeModal();
-        }
-    </script>
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 500,    // 800'den 500'e çektik (Daha seri)
-            easing: 'ease-out-cubic', // Daha doğal bir hızlanma eğrisi
-            once: true,       // Sadece bir kere çalışsın
-            offset: 50,       // Tetiklemek için çok aşağı inmeyi beklemesin
-            disable: 'mobile' // EĞER TELEFONDA ÇOK KASIYORSA BU SATIRI AÇ (Yorumu kaldır)
-        });
-    </script>
+    
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </body>
 </html>
