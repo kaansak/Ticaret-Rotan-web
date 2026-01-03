@@ -1,4 +1,4 @@
-// data.js - Sitenin Beyni
+// icerik.js - Sitenin Beyni
 
 const siteData = {
     // 1. REFERANSLAR (Logolar ve İsimler)
