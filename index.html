@@ -18,10 +18,26 @@
             }
         }
     </script>
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+   <style>
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .animate-scroll {
+            animation: scroll 20s linear infinite;
+            /* SİHİRLİ DOKUNUŞ BURADA: */
+            will-change: transform; 
+            /* Mobilde takılmayı önler: */
+            transform: translateZ(0); 
+        }
+    </style>
 </head>
 <body class="bg-brandDark text-white font-sans antialiased overflow-x-hidden">
 
-   <nav class="w-full flex items-center justify-between px-6 py-4 border-b border-gray-800 bg-brandDark/90 backdrop-blur fixed top-0 z-50">
+    <nav class="w-full flex items-center justify-between px-6 py-4 border-b border-gray-800 bg-brandDark/90 backdrop-blur fixed top-0 z-50">
         <a href="index.html" class="text-2xl font-bold tracking-tight text-white cursor-pointer decoration-0">
             Ticaret<span class="text-brandBlue">Radarı</span>
         </a>
@@ -36,7 +52,8 @@
 
     <section class="relative pt-32 pb-20 px-6 overflow-hidden">
         <div class="container mx-auto flex flex-col md:flex-row items-center gap-12">
-            <div class="w-full md:w-1/2 text-center md:text-left z-10">
+            
+            <div class="w-full md:w-1/2 text-center md:text-left z-10" data-aos="fade-right">
                 <div class="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-brandBlue uppercase bg-blue-900/30 rounded-full border border-blue-800">
                     Yeni Nesil Ticaret İstihbaratı
                 </div>
@@ -63,7 +80,8 @@
                     Kurumsal faturalı & Sözleşmeli hizmet
                 </p>
             </div>
-            <div class="w-full md:w-1/2 relative">
+
+            <div class="w-full md:w-1/2 relative" data-aos="fade-left" data-aos-delay="200">
                 <div class="absolute top-0 right-0 w-72 h-72 bg-blue-600/20 rounded-full blur-3xl -z-10"></div>
                 <div class="relative rounded-xl border border-gray-700 bg-gray-800/50 backdrop-blur p-2 shadow-2xl transform md:rotate-2 hover:rotate-0 transition duration-700">
                     <div class="flex items-center gap-2 px-2 py-2 border-b border-gray-700 mb-2">
@@ -86,16 +104,21 @@
 
     <section id="referanslar" class="py-12 border-y border-gray-800 bg-gray-900/50">
         <div class="container mx-auto px-6 text-center">
-            <p class="text-sm text-gray-400 font-bold mb-8 uppercase tracking-widest">
-                ŞU SEKTÖRLERDEN ÜRETİCİLER TicaretA BAŞLADI
+            <p class="text-sm text-gray-400 font-bold mb-8 uppercase tracking-widest" data-aos="fade-up">
+                ŞU SEKTÖRLERDEN ÜRETİCİLER TİCARETE BAŞLADI
             </p>
-            <div id="partners-container" class="flex flex-wrap justify-center items-center gap-6 md:gap-16"></div>
+            <div class="relative overflow-hidden w-full py-8">
+                <div class="flex animate-scroll w-[200%]">
+                    <div id="partners-container" class="flex w-1/2 justify-around items-center gap-16 px-8"></div>
+                    <div id="partners-container-clone" class="flex w-1/2 justify-around items-center gap-16 px-8"></div>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="nasil-calisir" class="py-24 bg-brandDark relative">
         <div class="container mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto mb-16">
+            <div class="text-center max-w-3xl mx-auto mb-16" data-aos="fade-up">
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">
                     Teknoloji Karmaşık, <span class="text-brandBlue">Ticaret Basittir.</span>
                 </h2>
@@ -112,19 +135,19 @@
                          <svg class="hidden md:block absolute top-12 -right-12 w-24 h-6 opacity-50 text-gray-700 z-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="right: -40px;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                     </div>
                 </div>
-                <div id="process-cards-container" class="grid md:grid-cols-3 gap-8 relative z-10"></div>
+                <div id="process-cards-container" class="grid md:grid-cols-3 gap-8 relative z-10" data-aos="fade-up" data-aos-delay="200"></div>
             </div>
         </div>
     </section>
 
     <section id="paketler" class="py-20 bg-gray-900 border-t border-gray-800">
         <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
+            <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Size Uygun Modeli Seçin</h2>
                 <p class="text-gray-400">İster sadece veri alın, ister tüm operasyonu bize bırakın.</p>
             </div>
             <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                 <div class="bg-gray-800 border border-gray-700 rounded-2xl p-8 hover:border-gray-500 transition">
+                 <div class="bg-gray-800 border border-gray-700 rounded-2xl p-8 hover:border-gray-500 transition" data-aos="fade-right">
                     <h3 class="text-2xl font-bold text-white mb-2">Hedef Firma Listesi</h3>
                     <p class="text-gray-400 text-sm mb-6">"Benim ekibim var, aramayı biz yaparız" diyenler için.</p>
                     <div class="text-3xl font-bold text-white mb-6">Veri Başına Ücretlendirme</div>
@@ -135,7 +158,7 @@
                     </ul>
                     <button class="w-full border border-white text-white font-bold py-3 rounded-lg hover:bg-white hover:text-black transition">Fiyat Listesi İste</button>
                 </div>
-                <div class="bg-gradient-to-b from-blue-900/40 to-gray-800 border-2 border-brandBlue rounded-2xl p-8 relative transform hover:scale-105 transition duration-300 shadow-2xl">
+                <div class="bg-gradient-to-b from-blue-900/40 to-gray-800 border-2 border-brandBlue rounded-2xl p-8 relative transform hover:scale-105 transition duration-300 shadow-2xl" data-aos="fade-left">
                     <div class="absolute top-0 right-0 bg-brandBlue text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">EN ÇOK TERCİH EDİLEN</div>
                     <h3 class="text-2xl font-bold text-white mb-2">Tam Kapsamlı Operasyon</h3>
                     <p class="text-blue-200 text-sm mb-6">"Hiç uğraşmayalım, bize direkt müşteri gönderin" diyenler için.</p>
@@ -147,6 +170,47 @@
                         <li class="flex items-center gap-3"><svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>Haftalık İlerleme Raporu</li>
                     </ul>
                     <button onclick="openModal()" class="w-full bg-brandBlue hover:bg-blue-600 text-white font-bold py-4 rounded-lg shadow-lg transition animate-pulse">HEMEN TEKLİF AL</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-brandDark border-t border-gray-800">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-white mb-4">Aklınızdaki Sorular</h2>
+                <p class="text-gray-400">Merak ettiğiniz tüm detayları şeffaflıkla cevaplıyoruz.</p>
+            </div>
+
+            <div class="space-y-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="border border-gray-700 rounded-lg bg-gray-800/50 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex justify-between items-center text-white font-semibold hover:bg-gray-800 transition">
+                        <span>Bu sistem yasal mı? KVKK sorunu olur mu?</span>
+                        <span class="text-brandBlue text-xl transition-transform transform">+</span>
+                    </button>
+                    <div class="hidden px-6 pb-4 text-gray-400 text-sm leading-relaxed border-t border-gray-700 pt-4">
+                        Tamamen yasaldır. Biz kişisel veri satmıyoruz; firmaların Google Maps, LinkedIn ve Web Sitelerinde <strong>kamuya açık (alenileştirdiği)</strong> ticari iletişim bilgilerini derliyoruz. Hizmetimiz "Açık Kaynak Pazar Araştırması" kapsamındadır.
+                    </div>
+                </div>
+
+                <div class="border border-gray-700 rounded-lg bg-gray-800/50 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex justify-between items-center text-white font-semibold hover:bg-gray-800 transition">
+                        <span>Satış garantisi veriyor musunuz?</span>
+                        <span class="text-brandBlue text-xl transition-transform transform">+</span>
+                    </button>
+                    <div class="hidden px-6 pb-4 text-gray-400 text-sm leading-relaxed border-t border-gray-700 pt-4">
+                        Biz sizi "karar verici" (Satın alma müdürü, CEO) ile masaya oturtma garantisi veriyoruz. Toplantıyı ayarlıyoruz, numuneyi gönderiyoruz. Masadaki pazarlık ve satış kapatma yeteneği sizin ürün kalitenize ve fiyatınıza bağlıdır.
+                    </div>
+                </div>
+
+                <div class="border border-gray-700 rounded-lg bg-gray-800/50 overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full px-6 py-4 text-left flex justify-between items-center text-white font-semibold hover:bg-gray-800 transition">
+                        <span>Hangi ülkelerden veri sağlayabiliyorsunuz?</span>
+                        <span class="text-brandBlue text-xl transition-transform transform">+</span>
+                    </button>
+                    <div class="hidden px-6 pb-4 text-gray-400 text-sm leading-relaxed border-t border-gray-700 pt-4">
+                        Dünya genelinde 180+ ülkeden veri çekebiliyoruz. Özellikle Avrupa (Almanya, İngiltere, Fransa), Amerika Birleşik Devletleri, Rusya ve Orta Doğu pazarlarında çok güçlü veritabanına sahibiz.
+                    </div>
                 </div>
             </div>
         </div>
@@ -191,7 +255,7 @@
             </div>
         </div>
     </footer>
-    
+
     <div id="analizModal" class="fixed inset-0 z-[60] hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
         <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity backdrop-blur-sm" onclick="closeModal()"></div>
         <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
@@ -235,7 +299,29 @@
 
     <script src="data.js"></script>
     <script src="app.js"></script>
+
     <script>
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('span:last-child');
+            
+            // Diğer açık olanları kapat (Opsiyonel ama şık durur)
+            document.querySelectorAll('.hidden').forEach(el => {
+                 // Basit tutalım, sadece tıklananı açsın
+            });
+
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.innerText = '-';
+                icon.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                icon.innerText = '+';
+                icon.classList.remove('rotate-180');
+            }
+        }
+        
+        // Modal Logic
         function openModal() { document.getElementById('analizModal').classList.remove('hidden'); }
         function closeModal() { document.getElementById('analizModal').classList.add('hidden'); }
         function sendToWhatsapp() {
@@ -247,6 +333,17 @@
             window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
             closeModal();
         }
+    </script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 500,    // 800'den 500'e çektik (Daha seri)
+            easing: 'ease-out-cubic', // Daha doğal bir hızlanma eğrisi
+            once: true,       // Sadece bir kere çalışsın
+            offset: 50,       // Tetiklemek için çok aşağı inmeyi beklemesin
+            disable: 'mobile' // EĞER TELEFONDA ÇOK KASIYORSA BU SATIRI AÇ (Yorumu kaldır)
+        });
     </script>
 </body>
 </html>

@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Referansları Oluştur
-function renderPartners() {
+/*  function renderPartners() {
     const container = document.getElementById("partners-container");
     if (!container) return; // Hata önleyici
     container.innerHTML = "";
@@ -36,6 +36,42 @@ function renderPartners() {
         container.innerHTML += htmlContent;
     });
 }
+ */
+// app.js - renderPartners Fonksiyonu (GÜNCELLENMİŞ HALİ)
+
+function renderPartners() {
+    // İki kutuyu da seçiyoruz (Asıl ve Kopya)
+    const container1 = document.getElementById("partners-container");
+    const container2 = document.getElementById("partners-container-clone");
+
+    // HTML içeriğini hazırla
+    let htmlContent = "";
+
+    siteData.partners.forEach(partner => {
+        // Logo kontrolü (Aynı mantık)
+        if (partner.logo && partner.logo.trim() !== "") {
+            htmlContent += `
+                <div class="group flex items-center justify-center grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300 cursor-default min-w-[150px]">
+                    <img src="${partner.logo}" alt="${partner.name}" class="h-10 md:h-12 w-auto object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <span class="hidden text-gray-200 font-extrabold text-xl gap-2 items-center">
+                        <span class="text-2xl">${partner.icon}</span> ${partner.name}
+                    </span>
+                </div>
+            `;
+        } else {
+            htmlContent += `
+                <div class="flex items-center gap-2 text-gray-200 font-extrabold text-xl opacity-60 hover:opacity-100 hover:text-white transition cursor-default min-w-[150px]">
+                    <span class="text-2xl">${partner.icon}</span> ${partner.name}
+                </div>
+            `;
+        }
+    });
+
+    // Hazırlanan içeriği İKİ KUTUYA DA bas (Böylece sonsuz döngü olur)
+    if (container1) container1.innerHTML = htmlContent;
+    if (container2) container2.innerHTML = htmlContent;
+}
+
 
 // Süreç Adımlarını Oluştur
 function renderProcess() {
