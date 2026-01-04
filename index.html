@@ -12,9 +12,9 @@
     <meta property="og:url" content="https://ticaretrotan.com/">
     <meta property="og:title" content="Ticaret Rotan - Nokta Atışı İhracat Müşterisi">
     <meta property="og:description" content="Ürünlerinizi kimlerin alacağını isim isim biliyoruz. Ücretsiz analiz isteyin.">
-    <meta property="og:image" content="https://placehold.co/1200x630/0B1120/3B82F6?text=Ticaret+Rotan+Analiz">
+    <meta property="og:image" content="assets/img/rapor-demo.jpg">
 
-    <link rel="icon" href="https://placehold.co/32x32/3B82F6/white?text=TR" type="image/png">
+    <link rel="icon" href="assets/img/favicon.png" type="image/png">
 
     <title>Ticaret Rotan - Nokta Atışı Müşteri Bulma</title>
 
@@ -36,7 +36,7 @@
         }
     </script>
 
-    <!-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
@@ -50,9 +50,8 @@
             will-change: transform;
             transform: translateZ(0);
         }
-        /* Input Validation Error Style */
         .input-error {
-            border-color: #ef4444 !important; /* Tailwind Red-500 */
+            border-color: #ef4444 !important;
             animation: shake 0.3s ease-in-out;
         }
         @keyframes shake {
@@ -64,8 +63,8 @@
 </head>
 <body class="bg-brandDark text-white font-sans antialiased overflow-x-hidden">
 
-    <nav class="w-full flex items-center justify-between px-6 py-4 border-b border-gray-800 bg-brandDark/90 backdrop-blur fixed top-0 z-50">
-        <a href="index.html" class="text-2xl font-bold tracking-tight text-white cursor-pointer decoration-0 z-50">
+    <nav class="w-full flex items-center justify-between px-6 py-4 border-b border-gray-800 bg-brandDark fixed top-0 z-50">
+        <a href="index.html" class="text-2xl font-bold tracking-tight text-white cursor-pointer decoration-0 z-50 relative">
             Ticaret<span class="text-brandBlue">Rotan</span>
         </a>
 
@@ -77,18 +76,19 @@
             </a>
         </div>
 
-        <button id="mobile-menu-btn" class="md:hidden z-50 text-gray-300 hover:text-white focus:outline-none">
+        <button id="mobile-menu-btn" class="md:hidden z-50 relative text-gray-300 hover:text-white focus:outline-none bg-brandDark p-1 rounded">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
             </svg>
         </button>
 
-        <div id="mobile-menu-overlay" class="fixed inset-0 bg-brandDark/95 backdrop-blur-lg z-40 transform translate-x-full transition-transform duration-300 flex flex-col items-center justify-center gap-8">
-            <a href="#nasil-calisir" class="mobile-link text-2xl font-bold text-white hover:text-brandBlue">Nasıl Çalışır?</a>
-            <a href="#referanslar" class="mobile-link text-2xl font-bold text-white hover:text-brandBlue">Başarı Hikayeleri</a>
-            <a href="#paketler" class="mobile-link text-2xl font-bold text-white hover:text-brandBlue">Paketler</a>
-            <a href="https://wa.me/905434688407" class="mt-4 bg-brandBlue text-white px-8 py-4 rounded-full text-xl font-bold shadow-xl">
-                📞 Bize Ulaşın
+        <div id="mobile-menu-overlay" class="fixed inset-0 bg-brandDark z-40 transform translate-x-full transition-transform duration-300 flex flex-col items-center justify-start pt-32 gap-10 h-screen w-screen">
+            <a href="#nasil-calisir" class="mobile-link text-2xl font-bold text-white hover:text-brandBlue border-b border-gray-800 pb-2 w-3/4 text-center">Nasıl Çalışır?</a>
+            <a href="#referanslar" class="mobile-link text-2xl font-bold text-white hover:text-brandBlue border-b border-gray-800 pb-2 w-3/4 text-center">Başarı Hikayeleri</a>
+            <a href="#paketler" class="mobile-link text-2xl font-bold text-white hover:text-brandBlue border-b border-gray-800 pb-2 w-3/4 text-center">Paketler</a>
+            
+            <a href="https://wa.me/905434688407" class="mt-4 bg-brandBlue text-white px-10 py-4 rounded-full text-xl font-bold shadow-xl flex items-center gap-2">
+                <span>📞</span> Bize Ulaşın
             </a>
         </div>
     </nav>
@@ -136,7 +136,7 @@
                         </div>
                         <div class="text-[10px] text-gray-500 font-mono ml-2">hedef_pazar_analizi_v2.pdf</div>
                     </div>
-                    <img src="https://placehold.co/800x600/1e293b/FFF?text=Hedef+Pazar+Raporu+Görünümü" alt="Rapor Önizleme" loading="lazy" class="rounded w-full shadow-inner">
+                    <img src="assets/img/rapor-demo.jpg" alt="Rapor Önizleme" loading="lazy" class="rounded w-full shadow-inner" onerror="this.src='https://placehold.co/800x600/1e293b/FFF?text=Gorsel+Yok'">
                     <div class="absolute -bottom-6 -left-6 bg-white text-gray-900 p-4 rounded-lg shadow-xl border-l-4 border-green-500 hidden md:block animate-bounce" style="animation-duration: 3s;">
                         <div class="text-xs font-bold text-gray-500 uppercase">Sonuç</div>
                         <div class="font-bold text-sm">🇩🇪 Hans Müller Toplantı İstedi</div>
@@ -225,7 +225,6 @@
                 <h2 class="text-3xl font-bold text-white mb-4">Aklınızdaki Sorular</h2>
                 <p class="text-gray-400">Merak ettiğiniz tüm detayları şeffaflıkla cevaplıyoruz.</p>
             </div>
-
             <div class="space-y-4" id="faq-container" data-aos="fade-up" data-aos-delay="100">
                 <div class="border border-gray-700 rounded-lg bg-gray-800/50 overflow-hidden">
                     <button class="faq-btn w-full px-6 py-4 text-left flex justify-between items-center text-white font-semibold hover:bg-gray-800 transition">
@@ -236,7 +235,6 @@
                         Tamamen yasaldır. Biz kişisel veri satmıyoruz; firmaların Google Maps, LinkedIn ve Web Sitelerinde <strong>kamuya açık (alenileştirdiği)</strong> ticari iletişim bilgilerini derliyoruz. Hizmetimiz "Açık Kaynak Pazar Araştırması" kapsamındadır.
                     </div>
                 </div>
-
                 <div class="border border-gray-700 rounded-lg bg-gray-800/50 overflow-hidden">
                     <button class="faq-btn w-full px-6 py-4 text-left flex justify-between items-center text-white font-semibold hover:bg-gray-800 transition">
                         <span>Satış garantisi veriyor musunuz?</span>
@@ -246,7 +244,6 @@
                         Biz sizi "karar verici" (Satın alma müdürü, CEO) ile masaya oturtma garantisi veriyoruz. Toplantıyı ayarlıyoruz, numuneyi gönderiyoruz. Masadaki pazarlık ve satış kapatma yeteneği sizin ürün kalitenize ve fiyatınıza bağlıdır.
                     </div>
                 </div>
-
                 <div class="border border-gray-700 rounded-lg bg-gray-800/50 overflow-hidden">
                     <button class="faq-btn w-full px-6 py-4 text-left flex justify-between items-center text-white font-semibold hover:bg-gray-800 transition">
                         <span>Hangi ülkelerden veri sağlayabiliyorsunuz?</span>
@@ -308,8 +305,8 @@
             <div class="border-t border-gray-900 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
                 <p>&copy; 2025 Ticaret Rotan Teknoloji A.Ş. Tüm hakları saklıdır.</p>
                 <div class="flex gap-4 mt-4 md:mt-0">
-                    <a href="#" class="hover:text-gray-400">Gizlilik Sözleşmesi</a>
-                    <a href="#" class="hover:text-gray-400">KVKK Aydınlatma Metni</a>
+                    <a href="gizlilik.html" class="hover:text-gray-400">Gizlilik Sözleşmesi</a>
+                    <a href="kvkk.html" class="hover:text-gray-400">KVKK Aydınlatma Metni</a>
                 </div>
             </div>
         </div>
@@ -356,9 +353,8 @@
         </div>
     </div>
 
-   <script src="icerik.js"></script>
+    <script src="icerik.js"></script>
     <script src="app.js"></script>
-    
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </body>
 </html>
