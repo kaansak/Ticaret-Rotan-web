@@ -22,7 +22,7 @@
     <meta property="og:description" content="Ürünlerinizi kimlerin alacağını isim isim biliyoruz. Ücretsiz analiz isteyin.">
     <meta property="og:image" content="assets/img/rapor-demo.jpg">
 
-    <link rel="icon" href="assets/img/favicon.png" type="image/png">
+    <link rel="icon" href="assets/img/logo-icon.png" type="image/png">
 
     <title>Ticaret Rotan - Nokta Atışı Müşteri Bulma</title>
 
@@ -67,13 +67,35 @@
             25% { transform: translateX(-5px); }
             75% { transform: translateX(5px); }
         }
+       
+        /* ... Diğer stiller kalabilir ... */
+
+        /* YENİ: Yatay (Dünya Gibi) Dönme Efekti */
+        @keyframes spin-3d {
+            0% { transform: perspective(1000px) rotateY(0deg); }
+            100% { transform: perspective(1000px) rotateY(360deg); }
+        }
+
+        .animate-spin-3d {
+            animation: spin-3d 6s linear infinite; /* 6 saniyede bir tam tur */
+            transform-style: preserve-3d; /* 3D derinlik hissi verir */
+        }
+    
+
     </style>
+
 </head>
 <body class="bg-brandDark text-white font-sans antialiased overflow-x-hidden">
 
     <nav class="w-full flex items-center justify-between px-6 py-4 border-b border-gray-800 bg-brandDark fixed top-0 z-50">
-        <a href="index.html" class="text-2xl font-bold tracking-tight text-white cursor-pointer decoration-0 z-50 relative">
-            Ticaret<span class="text-brandBlue">Rotan</span>
+        <a href="index.html" class="text-2xl font-bold tracking-tight text-white cursor-pointer decoration-0 z-50 relative flex items-center gap-1">
+    Ticaret
+    <span class="text-brandBlue inline-flex items-center">
+        R
+        <img src="assets/img/logo-icon.png" alt="O" class="h-8 w-auto mx-[1px] animate-spin-3d"> 
+        tan
+    </span>
+    </span>
         </a>
 
         <div class="hidden md:flex items-center gap-6">
